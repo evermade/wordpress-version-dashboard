@@ -55,7 +55,7 @@ include('config.php');
 		}
 
 		.servicelist {
-			padding: 2rem;
+			padding: 0rem;
 		}
 
 		.servicelist__item {
@@ -65,7 +65,7 @@ include('config.php');
 			.servicelist__item__row {
 				overflow: hidden;
 				padding: 0.5rem 0;
-				border-bottom: 2px #e3e7ed solid;
+				//border-bottom: 2px #e3e7ed solid;
 				cursor: pointer;
 			}
 
@@ -78,6 +78,7 @@ include('config.php');
 					width: 97%;
 					font-weight: 700;
 					font-size: 1.2rem;
+					line-height: 2rem;
 				}
 
 				.servicelist__item__row__statusled {
@@ -108,6 +109,7 @@ include('config.php');
 				.servicelist__item__details__row__title {
 					float: left;
 					width: 60%;
+					line-height: 1.5rem;
 				}
 
 				.servicelist__item__details__row__current {
@@ -122,9 +124,13 @@ include('config.php');
 
 
 		.statusled {
-			width: 1rem;
-			height: 1rem;
-			border-radius: 1rem;
+			width: 2rem;
+			height: 2rem;
+		}
+
+		.statusled.statusled--small {
+			width: 1.5rem;
+			height: 1.5rem;
 		}
 
 		.statusled.statusled--red {
@@ -205,12 +211,12 @@ include('config.php');
 						<div class="servicelist__item">
 							<div class="servicelist__item__row">
 								<div class="servicelist__item__row__statusled"><div class="statusled statusled--<?php echo $status ?>"></div></div>
-								<div class="servicelist__item__row__title"><?php echo $url ?> (<?php echo $json->core_current_version ?> / <?php echo $json->core_new_version ?>)</div>
+								<div class="servicelist__item__row__title"><?php $urlParts = parse_url($url); echo $urlParts['host'] ?> (<?php echo $json->core_current_version ?> / <?php echo $json->core_new_version ?>)</div>
 							</div>
 							<div class="servicelist__item__details">
 								<?php foreach ($json->plugins as $plugin) : ?>
 								<div class="servicelist__item__details__row">
-									<div class="servicelist__item__details__row__statusled"><div class="statusled statusled--<?php echo $plugin->needs_update ? "red" : "green" ?>"></div></div>
+									<div class="servicelist__item__details__row__statusled"><div class="statusled statusled--small statusled--<?php echo $plugin->needs_update ? "red" : "green" ?>"></div></div>
 									<div class="servicelist__item__details__row__title"><?php echo $plugin->name ?></div>
 									<div class="servicelist__item__details__row__current"><?php echo $plugin->current_version ?></div>
 									<div class="servicelist__item__details__row__new"><?php echo $plugin->new_version ?></div>
