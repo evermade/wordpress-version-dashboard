@@ -16,15 +16,11 @@ h1 {
 	overflow: hidden;
 }
 
-h1 svg {
-	width: 2.6rem;
-	height: 2.6rem;
+h1 img {
+	width: 3rem;
+	height: 3rem;
 	display: block;
 	float: left;
-}
-
-h1 svg path {
-	fill: white;
 }
 
 h1 span {
@@ -55,11 +51,28 @@ h1 span {
 
 		.servicelist__item__row__title {
 			float: left;
-			width: 97%;
+			width: 90%;
 			font-weight: 700;
 			font-size: 1.2rem;
 			line-height: 2rem;
 		}
+
+		.servicelist__item__row__icon {
+			float: left;
+			width: 7%;
+			text-align: right;
+			height: 2rem;
+		}
+
+			.servicelist__item__row__icon img {
+				width: 1rem;
+				height: 1rem;
+				margin: 0.5rem;
+				opacity: 0.5;
+			}
+			.servicelist__item__row__icon img:hover {
+				opacity: 1;
+			}
 
 		.servicelist__item__row__statusled {
 			float: left;
@@ -67,7 +80,7 @@ h1 span {
 		}
 
 		.servicelist__item__row__statusled .statusled {
-			margin: 0.2rem auto 0;
+			margin: 0 auto 0;
 		}
 
 	.servicelist__item__details {

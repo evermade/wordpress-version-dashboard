@@ -30,10 +30,14 @@ Web server capable of running php files is all you need.
   ```define('WP_VERSION_DASHBOARD_KEY', 'changethistosomethingelse');```
 
 # Support
-Found an issue? Please tell me about it :)
+Found an issue? Please tell us about it :)
 
 https://github.com/evermade/wordpress-version-dashboard/issues
 
 # Author
 
 This plugins is created by [@jalajoki](https://twitter.com/jalajoki) from [Evermade](http://www.evermade.fi/).
+
+# Icons
+
+By GitHub (https://github.com/github/octicons) [MIT (http://opensource.org/licenses/mit-license.php) or OFL (http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web)], via Wikimedia Commons
