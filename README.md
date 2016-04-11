@@ -40,4 +40,4 @@ This plugins is created by [@jalajoki](https://twitter.com/jalajoki) from [Everm
 
 # Icons
 
-By GitHub (https://github.com/github/octicons) [MIT (http://opensource.org/licenses/mit-license.php) or OFL (http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web)], via Wikimedia Commons
+https://github.com/github/octicons [MIT (http://opensource.org/licenses/mit-license.php]
