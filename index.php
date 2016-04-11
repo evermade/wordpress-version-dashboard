@@ -1,6 +1,10 @@
 <?php
 
 // Load config file.
+if (!file_exists('config.php')) {
+	die('Please create config.php. Check readme for more details.');
+}
+
 include('config.php');
 
 ?>
