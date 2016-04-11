@@ -15,158 +15,9 @@ include('config.php');
 		<title>Version Dashboard</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css" media="all" />
 		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Kelly+Slab' rel='stylesheet' type='text/css'>
-
-		<style>
-
-		body {
-			font-family: 'Roboto', sans-serif;
-			font-size: 1rem;
-			background: #F4F7FA;
-			color: #5b6778;
-		}
-
-		h1 {
-			font-family: 'Kelly Slab', cursive;
-			font-size: 2rem;
-			background: #282C36;
-			color: white;
-			margin: 0;
-			padding: 2rem;
-			overflow: hidden;
-		}
-
-		h1 svg {
-			width: 2.6rem;
-			height: 2.6rem;
-			display: block;
-			float: left;
-		}
-
-		h1 svg path {
-			fill: white;
-		}
-
-		h1 span {
-			float: left;
-			display: block;
-			line-height: 3rem;
-			margin-left: 1rem;
-		}
-
-		.servicelist {
-			padding: 0rem;
-		}
-
-		.servicelist__item {
-
-		}
-
-			.servicelist__item__row {
-				overflow: hidden;
-				padding: 0.5rem 0;
-				//border-bottom: 2px #e3e7ed solid;
-				cursor: pointer;
-			}
-
-			.servicelist__item__row:hover {
-				background: #e3e7ed;
-			}
-
-				.servicelist__item__row__title {
-					float: left;
-					width: 97%;
-					font-weight: 700;
-					font-size: 1.2rem;
-					line-height: 2rem;
-				}
-
-				.servicelist__item__row__statusled {
-					float: left;
-					width: 3%;
-				}
-
-				.servicelist__item__row__statusled .statusled {
-					margin: 0.2rem auto 0;
-				}
-
-			.servicelist__item__details {
-				display: none;
-			}
-
-				.servicelist__item__details__row__statusled {
-					float: left;
-					width: 3%;
-					margin-left: 2%;
-				}
-
-				.servicelist__item__details__row {
-					overflow: hidden;
-					border-bottom: 1px #e3e7ed solid;
-					padding: 0.5rem;
-				}
-
-				.servicelist__item__details__row__title {
-					float: left;
-					width: 60%;
-					line-height: 1.5rem;
-				}
-
-				.servicelist__item__details__row__current {
-					float: left;
-					width: 15%;
-				}
-
-				.servicelist__item__details__row__new {
-					float: left;
-					width: 20%;
-				}
-
-
-		.statusled {
-			width: 2rem;
-			height: 2rem;
-		}
-
-		.statusled.statusled--small {
-			width: 1.5rem;
-			height: 1.5rem;
-		}
-
-		.statusled.statusled--red {
-			background: #EA595D;
-		}
-
-		.statusled.statusled--yellow {
-			background: #fecb37;
-		}
-
-		.statusled.statusled--green {
-			background: #24BD8F;
-		}
-
-		</style>
-
-		<script>
-
-		document.addEventListener("DOMContentLoaded", function() {
-
-			var elements = document.querySelector(".servicelist");
-			elements.addEventListener("click", function(e) {
-
-				var itemNode = e.target.className == "servicelist__item__row"
-								? e.target.parentNode : e.target.parentNode.parentNode;
-
-				var display = itemNode.querySelector(".servicelist__item__details").style.display;
-				itemNode.querySelector(".servicelist__item__details").style.display = display == "block" ? "none" : "block";
-
-			});
-
-
-
-		});
-
-		</script>
+        <link href='https://fonts.googleapis.com/css?family=Kelly+Slab' rel='stylesheet' type='text/css'>
+        <link href='main.css' rel='stylesheet' type='text/css'>
+		<script src="main.js"></script>
 
 
 	</head>
@@ -187,7 +38,8 @@ include('config.php');
 			foreach ($config as $key => $url) {
 
 				// Load json-response.
-				$json = file_get_contents($url . '/wp-json/versiondashboardclient/v1/get_version_information/?key=' . $apiKey);
+				$apiUrl = $url . '/wp-json/versiondashboardclient/v1/get_version_information/?key=' . $apiKey;
+				$json = file_get_contents($apiUrl);
 
 				if ($json) {
 
@@ -227,6 +79,19 @@ include('config.php');
 						<?php
 
 					}
+
+				} else {
+
+					?>
+					<div class="servicelist__item">
+						<div class="servicelist__item__row">
+							<div class="servicelist__item__row__statusled"><div class="statusled statusled--grey"></div></div>
+							<div class="servicelist__item__row__title"><?php $urlParts = parse_url($url); echo $urlParts['host'] ?> <?php $json->message ?></div>
+						</div>
+						<div class="servicelist__item__details">
+						</div>
+					</div>
+					<?php
 
 				}
 
